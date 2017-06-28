@@ -39,7 +39,7 @@ def clean_text(text):
     
 
     # remove as many non-english characters and character sequences as you can
-    text = re.sub(r"[^A-Za-z0-9^,!.\/'+-=]", " ", text)
+    text = re.sub("[$%&'()*@/àâèé0123456789-]", " ", text)
     text = re.sub(r"what's", "what is ", text)
     text = re.sub(r"\'s", " ", text)
     text = re.sub(r"\'ve", " have ", text)
@@ -59,15 +59,8 @@ def clean_text(text):
     text = re.sub(r"\=", " = ", text)
     text = re.sub(r"'", " ", text)
     text = re.sub(r"(\d+)(k)", r"\g<1>000", text)
-    text = re.sub(r":", " : ", text)
-    text = re.sub(r" e g ", " eg ", text)
-    text = re.sub(r" b g ", " bg ", text)
-    text = re.sub(r" u s ", " american ", text)
-    text = re.sub(r"\0s", "0", text)
-    text = re.sub(r" 9 11 ", "911", text)
-    text = re.sub(r"e - mail", "email", text)
-    text = re.sub(r"j k", "jk", text)
-    text = re.sub(r"\s{2,}", " ", text
+    text = re.sub(r":", " ", text)
+    
     text = text.replace('  ',' ')
 
 ### TODO: fill out the function below that transforms the input text and window-size into a set of input/output pairs for use with our RNN model
