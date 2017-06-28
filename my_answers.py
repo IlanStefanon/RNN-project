@@ -36,30 +36,23 @@ def build_part1_RNN(step_size, window_size):
 ### TODO: list all unique characters in the text and remove any non-english ones
 def clean_text(text):
     # find all unique characters in the text
-    
+    unique_chars = set(text)
 
-    # remove as many non-english characters and character sequences as you can
-    text = re.sub("[$%&'()*@/àâèé0123456789-]", " ", text)
-    text = re.sub(r"what's", "what is ", text)
-    text = re.sub(r"\'s", " ", text)
-    text = re.sub(r"\'ve", " have ", text)
-    text = re.sub(r"can't", "cannot ", text)
-    text = re.sub(r"n't", " not ", text)
-    text = re.sub(r"i'm", "i am ", text)
-    text = re.sub(r"\'re", " are ", text)
-    text = re.sub(r"\'d", " would ", text)
-    text = re.sub(r"\'ll", " will ", text)
-    text = re.sub(r",", " ", text)
-    text = re.sub(r"\.", " ", text)
-    text = re.sub(r"!", " ! ", text)
-    text = re.sub(r"\/", " ", text)
-    text = re.sub(r"\^", " ^ ", text)
-    text = re.sub(r"\+", " + ", text)
-    text = re.sub(r"\-", " - ", text)
-    text = re.sub(r"\=", " = ", text)
-    text = re.sub(r"'", " ", text)
-    text = re.sub(r"(\d+)(k)", r"\g<1>000", text)
-    text = re.sub(r":", " ", text)
+    # remove as many non-english characters and character sequences as you can 
+
+    #allowed chars
+    allowed = {'a','b','c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+           't', 'u', 'v', 'w', 'x', 'y', 'z',' ', '!', ',', '.', ':', ';', '?'}
+
+    #chars to be removed
+    to_remove = unique_chars - allowed
+
+
+    # Clean the text
+
+    for c in to_remove:
+        text = text.replace(c, ' ')
+    
     
     text = text.replace('  ',' ')
 
